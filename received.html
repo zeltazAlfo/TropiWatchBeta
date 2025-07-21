@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GeoVision | Map Interface</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/received.css"/> 
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"
+  />
+</head>
+
+<body>
+  
+  
+  <div class="main-container">
+    <!-- Conteneur PDF à gauche -->
+    <div class="left-container">
+      <div class="pdf-viewer">
+        <div class="pdf-header">
+          <h3>TERRAIN ANALYSIS REPORT</h3>
+          <div class="pdf-controls">
+            <button class="pdf-btn"><span class="icon">⏴</span></button>
+            <span class="page-info">Page 1/5</span>
+            <button class="pdf-btn"><span class="icon">⏵</span></button>
+          </div>
+        </div>
+        <div class="pdf-content">
+          <!-- Placeholder pour le PDF -->
+          <div class="pdf-placeholder">
+            <div class="pdf-content">
+                <embed src="/Users/baptou/Documents/DS_spe_premieres.pdf" type="application/pdf" width="100%" height="600px" />
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteneur droite avec carte et coordonnées -->
+    <div class="right-container">
+      <!-- Carte -->
+      <div class="map-container">
+      <div id="map"></div>
+
+      <!-- Contrôles de coordonnées -->
+      <div class="coords-panel">
+        <div class="coords-display">
+          <div class="coord-box">
+            <label>LATITUDE</label>
+            <div class="coord-value" id="latDisplay">45.764043</div>
+          </div>
+          <div class="coord-box">
+            <label>LONGITUDE</label>
+            <div class="coord-value" id="lngDisplay">4.835659</div>
+          </div>
+        </div>
+      </div>
+        
+        
+      </div>
+      <button class="download-btn">
+        <span class="icon">↓</span> DOWNLOAD REPORT
+      </button>
+      <input type="file" id="fileInput" accept=".geojson,.json" width="120px"/>
+    </div>
+
+    <!-- Panneau droit avec options -->
+    
+  </div>
+
+  <div class="scanlines"></div>
+  <div class="grid-overlay"></div>
+  
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="script/received.js"></script>
+</body>
+</html>
