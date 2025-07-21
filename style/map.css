@@ -392,3 +392,70 @@ body::after {
     0% { background-position: 0 0; }
     100% { background-position: 0 100%; }
 }
+
+/* Version mobile */
+@media (max-width: 768px) {
+    body, html {
+      flex-direction: column;
+      overflow: auto;
+      height: auto;
+      gap: 0;
+    }
+  
+    .main-container {
+      grid-template-columns: 1fr;
+      margin: 0;
+      padding: 15px;
+      order: 2; /* Met le main-container au milieu */
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .left-container {
+      order: 2; /* Met le left-container après le right-container */
+      margin-top: 15px;
+    }
+  
+    .right-container {
+      order: 1; /* Met le right-container en premier */
+    }
+  
+    .left-bar {
+      width: 100%;
+      order: 3; /* Met la barre gauche en bas */
+      border-right: none;
+      border-top: 1px solid rgba(0, 255, 180, 0.2);
+      box-shadow: 0 -5px 15px rgba(0, 255, 150, 0.2);
+      border-radius: 0;
+      padding: 15px;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+  
+    .left-bar button {
+      padding: 10px;
+      font-size: 0.8rem;
+      flex: 1;
+      margin: 0 5px;
+    }
+  
+    #map {
+      height: 300px; /* Fixe une hauteur pour la carte */
+    }
+  
+    .inputs-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .inputs-container label {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  
+    .option_container {
+      margin-top: 0;
+    }
+  }
