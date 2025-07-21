@@ -421,7 +421,7 @@ body::after {
     }
   
     .left-bar {
-      width: 100%;
+      width: 92%;
       order: 3; /* Met la barre gauche en bas */
       border-right: none;
       border-top: 1px solid rgba(0, 255, 180, 0.2);
@@ -439,7 +439,8 @@ body::after {
       flex: 1;
       margin: 0 5px;
     }
-  
+    
+    .icon{display:none;}
     #map {
       height: 300px; /* Fixe une hauteur pour la carte */
     }
