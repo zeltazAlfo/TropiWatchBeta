@@ -99,7 +99,7 @@ function drawZone(geojson) {
     // Optionnel : modifier la couleur selon la valeur t
     // Ici on ne change que la transparence, on peut aussi changer la couleur
     const ratio = DNRender(dn, min, max);
-    const lightness = 80 - ratio * 50; // entre 80% et 30%
+    const lightness = 50 - ratio * 50; // entre 80% et 30%
     const color = `hsl(90, 77%, ${lightness}%,1)`;
     const coords = feature.geometry.coordinates;
     const latlngs = coords[0].map(coord => [coord[1], coord[0]]);
