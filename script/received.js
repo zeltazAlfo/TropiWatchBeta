@@ -75,11 +75,9 @@ function getDNRange(features) {
 
   return { min, max };
 }
-
-function mapDNtoOpacity(dn, dnMin = 40, dnMax = 80) {
-  const clamped = Math.min(Math.max(dn, dnMin), dnMax);
-  const normalized = (clamped - dnMin) / (dnMax - dnMin); // entre 0 et 1
-  return normalized; // ou Math.pow(normalized, 2) pour plus de contraste
+function DNRender(dn, min, max) {
+  const clamped = Math.min(Math.max(dn, min), max);
+  return (clamped - min) / (max - min);
 }
 
 
@@ -87,23 +85,30 @@ function drawZone(geojson) {
   color = "#56aa00"
   const features = geojson.features;
   if (!features) return;
-  const { min, max } = getDNRange(features);
   
+  const dns = geojson.features.map(f => f.properties.DN);
+  const min = Math.min(...dns);
+  const max = Math.max(...dns);
+
+
 
   features.forEach(feature => {
+    const dn = parseInt(feature.properties.DN, 10);
     // Conversion DN en transparence hexadécimale
     
     // Optionnel : modifier la couleur selon la valeur t
     // Ici on ne change que la transparence, on peut aussi changer la couleur
-    const opacity = mapDNtoOpacity(parseInt(feature.properties.DN, 10));
+    const ratio = DNRender(dn, min, max);
+    const lightness = 80 - ratio * 50; // entre 80% et 30%
+    const color = `hsl(90, 77%, ${lightness}%,1)`;
     const coords = feature.geometry.coordinates;
     const latlngs = coords[0].map(coord => [coord[1], coord[0]]);
     const polygon = L.polygon(
       latlngs
       , {
-      color: color + "00",      // bordure
+      color: "00000000",      // bordure
       fillColor: color,  // remplissage
-      fillOpacity: opacity       // opacité
+      fillOpacity: 0.85    // opacité
     }).addTo(map);
     
 
