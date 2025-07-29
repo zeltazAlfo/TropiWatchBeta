@@ -2,8 +2,9 @@
 
 let drawControl; 
 const map = L.map('map').setView([45.76, 4.84], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors',
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye...',
+  maxZoom: 17
 }).addTo(map);
 
 const drawnItems = new L.FeatureGroup();
@@ -108,7 +109,7 @@ function drawZone(geojson) {
       , {
       color: "00000000",      // bordure
       fillColor: color,  // remplissage
-      fillOpacity: 0.85    // opacité
+      fillOpacity: 0.5    // opacité
     }).addTo(map);
     
 

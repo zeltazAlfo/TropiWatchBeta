@@ -1,14 +1,14 @@
-/* Base Styles */
+/* Base Styles - Version Naturelle */
 :root {
-  --primary: #00ffaa;
-  --primary-dark: #00cc88;
-  --secondary: #00a0ff;
-  --bg-dark: #0d1d31;
-  --bg-darker: #0a1525;
-  --text-primary: #e0f8ff;
-  --text-secondary: #a0f0ff;
-  --panel-bg: rgba(15, 30, 45, 0.8);
-  --border-color: rgba(0, 255, 180, 0.3);
+  --primary: #5d9e5d; /* Vert forêt */
+  --primary-dark: #3e7a3e; /* Vert forêt plus foncé */
+  --secondary: #6b8c42; /* Vert olive */
+  --bg-dark: #1a2a1a; /* Fond sombre vert */
+  --bg-darker: #121f12; /* Fond très sombre vert */
+  --text-primary: #e8f3e8; /* Texte vert très clair */
+  --text-secondary: #c8e0c8; /* Texte vert clair */
+  --panel-bg: rgba(25, 45, 25, 0.8); /* Panel vert transparent */
+  --border-color: rgba(93, 158, 93, 0.3); /* Bordure verte */
 }
 
 * {
@@ -21,17 +21,16 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: 'Exo 2', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: radial-gradient(ellipse at bottom, var(--bg-dark) 0%, var(--bg-darker) 100%);
   color: var(--text-primary);
   overflow: hidden;
 }
 
 .icon {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin-right: 8px;
 }
-
 
 /* Main Container */
 .main-container {
@@ -62,7 +61,7 @@ body, html {
 
 .pdf-header {
   padding: 15px;
-  background: rgba(0, 20, 40, 0.6);
+  background: rgba(10, 30, 10, 0.6);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
@@ -71,9 +70,10 @@ body, html {
 
 .pdf-header h3 {
   color: var(--primary);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .pdf-controls {
@@ -139,20 +139,18 @@ body, html {
   border: 1px solid var(--border-color);
 }
 
-
-.map-container{
+.map-container {
     height: 70%;
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
-
 }
 
 #map {
     height: 90%;
     width: 90%;
-  background: #000;
+    background: #0a1a0a; /* Fond vert très sombre pour la carte */
 }
 
 .coords-panel {
@@ -170,7 +168,7 @@ body, html {
   flex: 1;
   text-align: center;
   padding: 10px;
-  background: rgba(0, 10, 20, 0.4);
+  background: rgba(15, 35, 15, 0.4);
   border-radius: 5px;
   margin: 0 5px;
 }
@@ -185,7 +183,7 @@ body, html {
 }
 
 .coord-value {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   font-size: 1.1rem;
   color: var(--primary);
 }
@@ -198,16 +196,16 @@ body, html {
 .coords-controls input {
   flex: 1;
   padding: 10px;
-  background: rgba(10, 25, 40, 0.7);
+  background: rgba(18, 40, 18, 0.7);
   border: 1px solid var(--border-color);
   border-radius: 5px;
   color: var(--primary);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   text-align: center;
 }
 
 .coords-controls input::placeholder {
-  color: rgba(160, 240, 255, 0.5);
+  color: rgba(200, 224, 200, 0.5);
 }
 
 .coords-controls button {
@@ -215,7 +213,7 @@ body, html {
   background: transparent;
   border: 1px solid var(--primary);
   color: var(--primary);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -225,16 +223,16 @@ body, html {
 }
 
 .coords-controls button:hover {
-  background: rgba(0, 255, 180, 0.1);
-  box-shadow: 0 0 15px rgba(0, 255, 180, 0.3);
+  background: rgba(93, 158, 93, 0.1);
+  box-shadow: 0 0 15px rgba(93, 158, 93, 0.3);
 }
 
 .download-btn {
     padding: 15px 25px;
     background: transparent;
-    border: 1px solid var(--secondary); /* Utilise le bleu pour varier */
+    border: 1px solid var(--secondary);
     color: var(--secondary);
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -248,10 +246,10 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 160, 255, 0.3);
-  }
+    box-shadow: 0 0 10px rgba(107, 140, 66, 0.3);
+}
   
-  .download-btn::before {
+.download-btn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -261,32 +259,31 @@ body, html {
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(0, 160, 255, 0.2),
+      rgba(107, 140, 66, 0.2),
       transparent
     );
     transition: 0.5s;
-  }
+}
   
-  .download-btn:hover {
-    background: rgba(0, 160, 255, 0.1);
-    box-shadow: 0 0 20px rgba(0, 160, 255, 0.5);
+.download-btn:hover {
+    background: rgba(107, 140, 66, 0.1);
+    box-shadow: 0 0 20px rgba(107, 140, 66, 0.5);
     transform: translateY(-2px);
-  }
+}
   
-  .download-btn:hover::before {
+.download-btn:hover::before {
     left: 100%;
-  }
+}
   
-  .download-btn .icon {
+.download-btn .icon {
     font-size: 1.2rem;
     margin-right: 10px;
     transition: transform 0.3s ease;
-  }
+}
   
-  .download-btn:hover .icon {
+.download-btn:hover .icon {
     transform: translateY(3px);
-  }
-
+}
 
 @keyframes signal {
   0%, 100% { opacity: 0.5; }
@@ -307,11 +304,6 @@ body, html {
   text-align: center;
 }
 
-
-
-
-
-
 /* Effects */
 .scanlines {
   position: fixed;
@@ -322,26 +314,12 @@ body, html {
   background: linear-gradient(
     to bottom,
     transparent 95%,
-    rgba(0, 255, 180, 0.03) 96%
+    rgba(93, 158, 93, 0.03) 96%
   );
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 999;
   animation: scanline 8s linear infinite;
-}
-
-.grid-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0, 255, 180, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 180, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: 998;
 }
 
 @keyframes scanline {
@@ -351,7 +329,7 @@ body, html {
 
 /* Leaflet Overrides */
 .leaflet-container {
-  background: #000 !important;
+  background: #0a1a0a !important;
 }
 
 .leaflet-control {
@@ -367,8 +345,9 @@ body, html {
 }
 
 .leaflet-bar a:hover {
-  background: rgba(0, 255, 180, 0.1) !important;
+  background: rgba(93, 158, 93, 0.1) !important;
 }
+
 /* Version mobile */
 @media (max-width: 768px) {
     body, html {
@@ -377,24 +356,24 @@ body, html {
     }
   
     .main-container {
-      grid-template-columns: 1fr; /* Une seule colonne */
+      grid-template-columns: 1fr;
       height: auto;
     }
   
     .left-container {
-      display: none; /* Masque complètement le PDF viewer */
+      display: none;
     }
   
     .right-container {
       width: 100%;
-      height: 100vh; /* Prend toute la hauteur */
+      height: 100vh;
       padding: 15px;
       border-radius: 0;
       border: none;
     }
   
     .map-container {
-      height: 70vh; /* Ajuste la hauteur de la carte */
+      height: 70vh;
     }
   
     #map {
@@ -409,4 +388,4 @@ body, html {
     .download-btn {
       margin: 15px auto;
     }
-  }
+}

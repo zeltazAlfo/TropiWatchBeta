@@ -20,8 +20,9 @@ function testAnalyze() {
 const map = L.map('map').setView([45.76, 4.84], 13);
 
 // Ajout couche tuiles OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors',
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye...',
+  maxZoom: 19
 }).addTo(map);
 
 // FeatureGroup qui contiendra les dessins
@@ -32,11 +33,11 @@ map.addLayer(drawnItems);
 const drawControl = new L.Control.Draw({
   draw: {
     polyline: false,
-    polygon: true,
+    polygon: false,
     circle: false,
     marker: false,
     circlemarker: false,
-    rectangle: false,
+    rectangle: true,
   },
   edit: {
     featureGroup: drawnItems,
@@ -48,10 +49,10 @@ const drawControl = new L.Control.Draw({
 // Gestion boutons
 
 // Dessiner polygone
-const drawPolygon = new L.Draw.Polygon(map);
+const drawRectangle = new L.Draw.Rectangle(map);
 document
-  .getElementById('drawPolygonBtn')
-  .addEventListener('click', () => drawPolygon.enable());
+  .getElementById('drawBtn')
+  .addEventListener('click', () => drawRectangle.enable());
 
 // Éditer les formes
 let editing = false;
@@ -125,16 +126,17 @@ document.getElementById('fileInput').addEventListener('change', (e) => {
 
 document.getElementById("askBtn").addEventListener("click", () => {
   const layers = drawnItems.getLayers();
-  const nbLayer = layers.length;
+ 
 
-  if (nbLayer !== 1) {
-    alert(`Please select only one area. You have selected ${nbLayer} areas.`);
-    return;
+  if (layers.length > 0) {
+    const features = layers.map(layer => layer.toGeoJSON());
+    const geojson = {
+      type: "FeatureCollection",
+      features: features
+    };
+  // Si tu veux l'afficher ou le traiter ensuite
+  console.log("GeoJSON:", JSON.stringify(geojson));
   }
 
-  // Récupération du GeoJSON du layer sélectionné
-  const jsonArea = layers[0].toGeoJSON();
 
-  // Si tu veux l'afficher ou le traiter ensuite
-  console.log("GeoJSON:", JSON.stringify(jsonArea));
 });
